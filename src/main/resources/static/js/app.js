@@ -16,9 +16,10 @@ angular.module('sso', [ 'ngRoute', 'ngResource' ]).config(
 	};
 	if (!$scope.user) {
 		$http.get('/dashboard/user').success(function(data) {
+			console.log("data : " + data);
 			$scope.user = data;
 			$scope.authenticated = true;
-		}).error(function() {
+		}).error(function(response) {
 			$scope.authenticated = false;
 		});
 	}
